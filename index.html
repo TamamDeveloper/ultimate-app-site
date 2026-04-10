@@ -196,9 +196,12 @@ nav.scrolled{
 
 /* score ticker */
 .score-ticker{
-  position:absolute;bottom:48px;left:60px;
-  display:flex;gap:32px;
+  display:flex;gap:40px;flex-wrap:wrap;
+  margin-top:64px;
+  padding-top:32px;
+  border-top:1px solid rgba(255,255,255,0.08);
   opacity:0;animation:revealUp .8s .8s ease forwards;
+  position:relative;z-index:2;
 }
 .tick{display:flex;flex-direction:column}
 .tick-val{
@@ -356,8 +359,8 @@ footer{
 }
 @media(max-width:640px){
   nav{padding:16px 20px}
-  .hero{padding:100px 20px 80px}
-  .score-ticker{left:20px;bottom:32px}
+  .hero{padding:100px 20px 64px}
+  .score-ticker{gap:24px;margin-top:48px}
   .section{padding:72px 20px}
   .priv-band{padding:40px 28px}
   footer{padding:30px 20px}
@@ -406,14 +409,15 @@ footer{
       </a>
       <a href="privacy.html" class="btn btn-o">Privacy Policy</a>
     </div>
+
+    <!-- stats — in flow, below buttons -->
+    <div class="score-ticker">
+      <div class="tick"><div class="tick-val">∞<span></span></div><div class="tick-label">Participants</div></div>
+      <div class="tick"><div class="tick-val">1<span>tap</span></div><div class="tick-label">Generate Bracket</div></div>
+      <div class="tick"><div class="tick-val">0<span>kb</span></div><div class="tick-label">Data Sent</div></div>
+    </div>
   </div>
 
-  <!-- stats -->
-  <div class="score-ticker">
-    <div class="tick"><div class="tick-val">∞<span></span></div><div class="tick-label">Participants</div></div>
-    <div class="tick"><div class="tick-val">1<span>tap</span></div><div class="tick-label">Generate Bracket</div></div>
-    <div class="tick"><div class="tick-val">0<span>kb</span></div><div class="tick-label">Data Sent</div></div>
-  </div>
 </section>
 
 <!-- FEATURES -->
