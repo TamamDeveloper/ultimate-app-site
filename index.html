@@ -77,25 +77,24 @@ nav.scrolled{
   overflow:hidden;
 }
 
-/* Trophy image */
+/* Trophy - subtle background watermark */
 .trophy-img-wrap{
-  position:absolute;right:3%;top:50%;transform:translateY(-50%);
-  width:440px;height:440px;
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  width:580px;height:580px;
   pointer-events:none;z-index:1;
-  opacity:0;animation:revealUp 1.1s .4s ease forwards;
+  opacity:0;
+  animation:trophyReveal 2s 0.3s ease forwards;
 }
 .trophy-img-wrap img{
   width:100%;height:100%;
   object-fit:contain;
-  mix-blend-mode:lighten;
-  filter:
-    drop-shadow(0 0 60px rgba(255,200,0,0.35))
-    drop-shadow(0 0 120px rgba(200,160,0,0.2));
-  animation:trophyFloat 4s ease-in-out infinite;
+  mix-blend-mode:luminosity;
+  opacity:0.08;
+  filter:sepia(1) hue-rotate(185deg) saturate(0.3) brightness(2);
 }
-@keyframes trophyFloat{
-  0%,100%{transform:translateY(0px) scale(1)}
-  50%{transform:translateY(-18px) scale(1.015)}
+@keyframes trophyReveal{
+  from{opacity:0}
+  to{opacity:1}
 }
 
 .hero-inner{max-width:760px;position:relative;z-index:2}
