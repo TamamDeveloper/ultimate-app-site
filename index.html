@@ -77,14 +77,18 @@ nav.scrolled{
   overflow:hidden;
 }
 
-/* Court lines SVG decoration */
-.court-deco{
-  position:absolute;right:-60px;top:50%;transform:translateY(-50%);
-  width:520px;height:520px;
-  opacity:0.055;pointer-events:none;
-  animation:courtSpin 40s linear infinite;
+/* Trophy decoration */
+.trophy-deco{
+  position:absolute;right:-80px;top:50%;transform:translateY(-50%);
+  width:560px;height:560px;
+  pointer-events:none;
+  animation:trophySpin 30s linear infinite;
+  filter:drop-shadow(0 0 60px rgba(200,230,25,0.07));
 }
-@keyframes courtSpin{to{transform:translateY(-50%) rotate(360deg)}}
+@keyframes trophySpin{
+  0%  {transform:translateY(-50%) rotate(0deg)}
+  100%{transform:translateY(-50%) rotate(360deg)}
+}
 
 .hero-inner{max-width:760px;position:relative;z-index:2}
 
@@ -127,14 +131,16 @@ nav.scrolled{
 .hero-cta{
   margin-top:48px;
   display:flex;gap:14px;flex-wrap:wrap;
+  max-width:520px;
   opacity:0;
   animation:revealUp .8s .6s ease forwards;
 }
 .btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:15px 36px;border-radius:6px;
-  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:15px 28px;border-radius:6px;
+  font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;
   letter-spacing:.04em;text-decoration:none;border:none;cursor:pointer;
+  white-space:nowrap;
   transition:transform .2s,box-shadow .2s,background .2s;
 }
 .btn-y{background:var(--yellow);color:#08192b}
@@ -337,18 +343,65 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <!-- SVG court lines -->
-  <svg class="court-deco" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="20" y="20" width="480" height="480" stroke="white" stroke-width="2"/>
-    <rect x="20" y="20" width="480" height="480" rx="240" stroke="white" stroke-width="2"/>
-    <line x1="260" y1="20" x2="260" y2="500" stroke="white" stroke-width="2"/>
-    <line x1="20" y1="260" x2="500" y2="260" stroke="white" stroke-width="2"/>
-    <rect x="100" y="100" width="320" height="320" stroke="white" stroke-width="1.5"/>
-    <circle cx="260" cy="260" r="60" stroke="white" stroke-width="1.5"/>
-    <line x1="20" y1="160" x2="500" y2="160" stroke="white" stroke-width="1"/>
-    <line x1="20" y1="360" x2="500" y2="360" stroke="white" stroke-width="1"/>
-    <line x1="160" y1="20" x2="160" y2="500" stroke="white" stroke-width="1"/>
-    <line x1="360" y1="20" x2="360" y2="500" stroke="white" stroke-width="1"/>
+  <!-- Tennis trophy decoration -->
+  <svg class="trophy-deco" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Outer orbit ring -->
+    <circle cx="280" cy="280" r="270" stroke="rgba(200,230,25,0.06)" stroke-width="1.5" stroke-dasharray="6 10"/>
+    <circle cx="280" cy="280" r="240" stroke="rgba(200,230,25,0.04)" stroke-width="1"/>
+
+    <!-- Orbiting tennis balls around the trophy -->
+    <circle cx="280" cy="10" r="10" fill="rgba(200,230,25,0.25)"/>
+    <circle cx="280" cy="10" r="10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+    <!-- seam on orbit ball -->
+    <path d="M273 10 Q280 6 287 10" stroke="rgba(255,255,255,0.4)" stroke-width="0.7" fill="none"/>
+    <path d="M273 10 Q280 14 287 10" stroke="rgba(255,255,255,0.4)" stroke-width="0.7" fill="none"/>
+
+    <circle cx="550" cy="280" r="7" fill="rgba(200,230,25,0.18)"/>
+    <circle cx="10" cy="280" r="7" fill="rgba(200,230,25,0.14)"/>
+    <circle cx="280" cy="550" r="8" fill="rgba(200,230,25,0.16)"/>
+
+    <!-- Trophy cup body -->
+    <g transform="translate(180, 130)" opacity="0.12">
+      <!-- Cup bowl -->
+      <path d="M40 0 L160 0 Q170 60 160 100 Q140 160 100 180 Q60 160 40 100 Q30 60 40 0 Z"
+            fill="rgba(200,230,25,0.5)" stroke="rgba(200,230,25,0.8)" stroke-width="2"/>
+      <!-- Cup shine -->
+      <path d="M55 20 Q70 10 85 20 Q75 80 65 110" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Handles -->
+      <path d="M40 40 Q0 50 5 100 Q10 130 40 120" stroke="rgba(200,230,25,0.8)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M160 40 Q200 50 195 100 Q190 130 160 120" stroke="rgba(200,230,25,0.8)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Stem -->
+      <rect x="88" y="180" width="24" height="60" fill="rgba(200,230,25,0.6)" stroke="rgba(200,230,25,0.8)" stroke-width="1.5"/>
+      <!-- Base plate -->
+      <rect x="55" y="238" width="90" height="18" rx="4" fill="rgba(200,230,25,0.5)" stroke="rgba(200,230,25,0.8)" stroke-width="1.5"/>
+      <rect x="40" y="252" width="120" height="12" rx="3" fill="rgba(200,230,25,0.4)" stroke="rgba(200,230,25,0.7)" stroke-width="1.5"/>
+      <!-- Star on cup -->
+      <text x="100" y="110" text-anchor="middle" font-size="36" fill="rgba(255,255,255,0.35)">★</text>
+    </g>
+
+    <!-- Small decorative elements at compass points -->
+    <!-- Tennis racket silhouette top-right -->
+    <g transform="translate(400,80) rotate(45)" opacity="0.08">
+      <ellipse cx="0" cy="-30" rx="22" ry="28" stroke="white" stroke-width="2" fill="none"/>
+      <line x1="-22" y1="-30" x2="22" y2="-30" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="-58" x2="0" y2="-2" stroke="white" stroke-width="1"/>
+      <line x1="-15" y1="-45" x2="15" y2="-15" stroke="white" stroke-width="0.7"/>
+      <line x1="15" y1="-45" x2="-15" y2="-15" stroke="white" stroke-width="0.7"/>
+      <rect x="-4" y="0" width="8" height="40" rx="4" fill="none" stroke="white" stroke-width="2"/>
+    </g>
+    <!-- Tennis racket bottom-left -->
+    <g transform="translate(155,460) rotate(-135)" opacity="0.06">
+      <ellipse cx="0" cy="-30" rx="22" ry="28" stroke="white" stroke-width="2" fill="none"/>
+      <line x1="-22" y1="-30" x2="22" y2="-30" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="-58" x2="0" y2="-2" stroke="white" stroke-width="1"/>
+      <rect x="-4" y="0" width="8" height="40" rx="4" fill="none" stroke="white" stroke-width="2"/>
+    </g>
+
+    <!-- Tick marks on outer ring -->
+    <line x1="280" y1="18" x2="280" y2="28" stroke="rgba(200,230,25,0.15)" stroke-width="1.5"/>
+    <line x1="280" y1="532" x2="280" y2="542" stroke="rgba(200,230,25,0.15)" stroke-width="1.5"/>
+    <line x1="18" y1="280" x2="28" y2="280" stroke="rgba(200,230,25,0.15)" stroke-width="1.5"/>
+    <line x1="532" y1="280" x2="542" y2="280" stroke="rgba(200,230,25,0.15)" stroke-width="1.5"/>
   </svg>
 
   <div class="hero-inner">
@@ -537,15 +590,26 @@ footer{
       this.vx = vx; this.vy = vy;
       this.alpha = alpha;
       this.bounce = 0.72 + Math.random()*0.1;
-      this.friction = 0.995;
+      this.friction = 0.992;
       this.gravity = 0.18 + Math.random()*0.08;
       this.squishY = 1; this.squishX = 1;
       this.squishTimer = 0;
-      // trail
+      this.resting = false;
       this.trail = [];
       this.trailMax = 8;
     }
     update(){
+      if(this.resting){
+        // slowly roll to a stop
+        this.vx *= 0.88;
+        if(Math.abs(this.vx) < 0.02) this.vx = 0;
+        this.x += this.vx;
+        if(this.x + this.r >= W){ this.x = W - this.r; this.vx *= -0.4; }
+        if(this.x - this.r <= 0){ this.x = this.r; this.vx *= -0.4; }
+        this.trail = [];
+        return;
+      }
+
       this.vy += this.gravity;
       this.vx *= this.friction;
       this.x += this.vx;
@@ -555,12 +619,14 @@ footer{
       if(this.y + this.r >= H){
         this.y = H - this.r;
         this.vy *= -this.bounce;
-        this.vx *= 0.85;
-        // squish on impact
+        this.vx *= 0.82;
         this.squishY = 0.65;
         this.squishX = 1.35;
         this.squishTimer = 12;
-        if(Math.abs(this.vy) < 0.5) this.vy = 0;
+        if(Math.abs(this.vy) < 1.2){
+          this.vy = 0;
+          this.resting = true;
+        }
       }
       // Ceiling
       if(this.y - this.r <= 0){
